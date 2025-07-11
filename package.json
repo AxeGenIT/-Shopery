@@ -1,0 +1,31 @@
+{
+  "name": "shopery",
+  "version": "1.0.0",
+  "description": "Shopery monorepo with client and server",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "client:dev": "cd client && npm run dev",
+    "client:build": "cd client && npm run build",
+    "client:lint": "cd client && npm run lint",
+    "server:dev": "cd server && npm run dev",
+    "server:build": "cd server && npm run build",
+    "server:lint": "cd server && npm run lint",
+    "server:lint:fix": "cd server && npm run lint:fix",
+    "server:format": "cd server && npm run format",
+    "build:all": "npm run client:build && npm run server:build",
+    "lint:all": "npm run client:lint && npm run server:lint",
+    "lint:fix:all": "npm run server:lint:fix",
+    "format:all": "npm run server:format",
+    "pre-push": "npm run lint:all && npm run build:all",
+    "test:pre-push": ".husky/pre-push",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install && cd .."
+  },
+  "devDependencies": {
+    "husky": "^8.0.3"
+  }
+}
